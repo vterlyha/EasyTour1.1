@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,4 +40,35 @@ public class RoomCategory {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj)
+	        return true;
+	    if (obj == null)
+	    	return false;
+        if (getClass() != obj.getClass())
+            return false;
+        RoomCategory other = (RoomCategory) obj;
+        if (id != other.id) {
+            return false;
+        }
+        if (category != other.category) {
+            return false;
+        }
+        return true;
+    } 
+	
+	@Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+    
+    @Override
+    public String toString() {
+        return "RoomCategory [id=" + id + ", category=" + category + "]";
+    }
 }

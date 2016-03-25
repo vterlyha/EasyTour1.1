@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,4 +63,42 @@ public class Hotel {
 	public void setCategory(HotelCategory category) {
 		this.category = category;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj)
+	        return true;
+	    if (obj == null)
+	    	return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Hotel other = (Hotel) obj;
+        if (id != other.id) {
+            return false;
+        }
+        if (name != other.name) {
+            return false;
+        }
+        if (city != other.city) {
+            return false;
+        }
+        if (category != other.category) {
+        	return false;
+        }
+        return true;
+    }    
+	
+	@Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+    
+    @Override
+    public String toString() {
+        return "Hotel [id=" + id + ", name=" + name + ", "
+        		+ "city=" + city + ", category=" + category + "]";
+    }
 }
