@@ -1,30 +1,32 @@
-package Entity;
+package com.java.tour_firm.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "countries")
-public class Country {
+@Table(name = "roomCategory")
+public class RoomCategory {
 	
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "category")
+	private String category;
 
-	public Country() {}
+	public RoomCategory(){}
 	
-	public Country(Integer id, String name) {
+	public RoomCategory(Integer id, String category) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.category = category;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -33,12 +35,12 @@ public class Country {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	@Override
@@ -49,11 +51,11 @@ public class Country {
 	    	return false;
         if (getClass() != obj.getClass())
             return false;
-        Country other = (Country) obj;
+        RoomCategory other = (RoomCategory) obj;
         if (id != other.id) {
             return false;
         }
-        if (name != other.name) {
+        if (category != other.category) {
             return false;
         }
         return true;
@@ -69,6 +71,6 @@ public class Country {
     
     @Override
     public String toString() {
-        return "Country [id=" + id + ", name=" + name + "]";
+        return "RoomCategory [id=" + id + ", category=" + category + "]";
     }
 }

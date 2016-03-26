@@ -1,35 +1,37 @@
-package Entity;
+package com.java.tour_firm.entity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "hotels")
-public class Hotel {
+@Table(name = "cities")
+public class City {
 	
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "cityId")
-	private City city;
-	
-	@Column(name = "categoryId")
-	private HotelCategory category;
+	@ManyToOne(optional=false, targetEntity=Country.class)
+	@JoinColumn(name="countryId")
+	private Country country;
 
-	public Hotel(){}
+	public City() {}
 	
-	public Hotel(Integer id, String name, City city, HotelCategory category) {
+	public City(Integer id, String name, Country country) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.city = city;
-		this.category = category;
+		this.country = country;
 	}
 
 	public Integer getId() {
@@ -48,20 +50,12 @@ public class Hotel {
 		this.name = name;
 	}
 
-	public City getCity() {
-		return city;
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	public HotelCategory getCategory() {
-		return category;
-	}
-
-	public void setCategory(HotelCategory category) {
-		this.category = category;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 	
 	@Override
@@ -72,18 +66,15 @@ public class Hotel {
 	    	return false;
         if (getClass() != obj.getClass())
             return false;
-        Hotel other = (Hotel) obj;
+        City other = (City) obj;
         if (id != other.id) {
             return false;
         }
         if (name != other.name) {
             return false;
         }
-        if (city != other.city) {
+        if (country != other.country) {
             return false;
-        }
-        if (category != other.category) {
-        	return false;
         }
         return true;
     }    
@@ -98,7 +89,8 @@ public class Hotel {
     
     @Override
     public String toString() {
-        return "Hotel [id=" + id + ", name=" + name + ", "
-        		+ "city=" + city + ", category=" + category + "]";
+        return "City [id=" + id + ", name=" + 
+        		name + ", country=" + country + "]";
     }
+	    
 }

@@ -1,25 +1,27 @@
-package Entity;
+package com.java.tour_firm.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "roomCategory")
-public class RoomCategory {
-	
-	@Id @GeneratedValue
+@Table(name = "hotelCategory")
+public class HotelCategory {
+
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
 	@Column(name = "category")
 	private String category;
 
-	public RoomCategory(){}
+	public HotelCategory() {}
 	
-	public RoomCategory(Integer id, String category) {
+	public HotelCategory(Integer id, String category) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -49,7 +51,7 @@ public class RoomCategory {
 	    	return false;
         if (getClass() != obj.getClass())
             return false;
-        RoomCategory other = (RoomCategory) obj;
+        HotelCategory other = (HotelCategory) obj;
         if (id != other.id) {
             return false;
         }
@@ -69,6 +71,6 @@ public class RoomCategory {
     
     @Override
     public String toString() {
-        return "RoomCategory [id=" + id + ", category=" + category + "]";
+        return "HotelCategory [id=" + id + ", category=" + category + "]";
     }
 }
