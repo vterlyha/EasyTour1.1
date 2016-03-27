@@ -1,4 +1,6 @@
 package com.java.tour_firm.entity;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +29,10 @@ public class Hotel {
 	
 	@ManyToOne(optional=false, targetEntity=Country.class)
 	@JoinColumn(name = "categoryId")
-	private HotelCategory category;
+	private HotelCategory hotelCategory;
+	
+	@OneToMany(mappedBy="hotel")
+	private Set<RoomCategoryHotel> roomCategoryHotel;
 
 	public Hotel(){}
 	
@@ -35,7 +41,15 @@ public class Hotel {
 		this.id = id;
 		this.name = name;
 		this.city = city;
-		this.category = category;
+		this.hotelCategory = category;
+	}
+
+	public Set<RoomCategoryHotel> getRoomCategoryHotel() {
+		return roomCategoryHotel;
+	}
+
+	public void setRoomCategoryHotel(Set<RoomCategoryHotel> roomCategoryHotel) {
+		this.roomCategoryHotel = roomCategoryHotel;
 	}
 
 	public Integer getId() {
@@ -63,11 +77,11 @@ public class Hotel {
 	}
 
 	public HotelCategory getCategory() {
-		return category;
+		return hotelCategory;
 	}
 
 	public void setCategory(HotelCategory category) {
-		this.category = category;
+		this.hotelCategory = category;
 	}
 	
 	@Override
@@ -88,7 +102,7 @@ public class Hotel {
         if (city != other.city) {
             return false;
         }
-        if (category != other.category) {
+        if (hotelCategory != other.hotelCategory) {
         	return false;
         }
         return true;
@@ -105,6 +119,7 @@ public class Hotel {
     @Override
     public String toString() {
         return "Hotel [id=" + id + ", name=" + name + ", "
-        		+ "city=" + city + ", category=" + category + "]";
+        		+ "city=" + city + ", category=" + hotelCategory
+        		+ ", roomCategoryHotel=" + roomCategoryHotel + "]";
     }
 }

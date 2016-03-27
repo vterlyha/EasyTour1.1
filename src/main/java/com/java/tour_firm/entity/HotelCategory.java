@@ -1,10 +1,13 @@
 package com.java.tour_firm.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,13 +21,25 @@ public class HotelCategory {
 	
 	@Column(name = "category")
 	private String category;
+	
+	@OneToMany(mappedBy="hotelCategory")
+	private Set<Hotel> hotels;
 
 	public HotelCategory() {}
 	
-	public HotelCategory(Integer id, String category) {
+	public HotelCategory(Integer id, String category, Set<Hotel> hotels) {
 		super();
 		this.id = id;
 		this.category = category;
+		this.hotels = hotels;
+	}
+
+	public Set<Hotel> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(Set<Hotel> hotels) {
+		this.hotels = hotels;
 	}
 
 	public Integer getId() {
