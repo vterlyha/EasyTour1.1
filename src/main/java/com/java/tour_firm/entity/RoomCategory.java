@@ -1,10 +1,13 @@
 package com.java.tour_firm.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,13 +21,24 @@ public class RoomCategory {
 	
 	@Column(name = "category")
 	private String category;
-
+	
+	@OneToMany(mappedBy="roomCategory")
+	private Set<RoomCategoryHotel> roomCategoryHotel;
+	
 	public RoomCategory(){}
 	
 	public RoomCategory(Integer id, String category) {
 		super();
 		this.id = id;
 		this.category = category;
+	}
+
+	public void setRoomCategoryHotel(Set<RoomCategoryHotel> roomCategoryHotel) {
+		this.roomCategoryHotel = roomCategoryHotel;
+	}
+	
+	public Set<RoomCategoryHotel> getRoomCategoryHotel() {
+		return roomCategoryHotel;
 	}
 
 	public Integer getId() {
@@ -58,6 +72,9 @@ public class RoomCategory {
         if (category != other.category) {
             return false;
         }
+        if (other.roomCategoryHotel != roomCategoryHotel) {
+        	return false;
+        }
         return true;
     } 
 	
@@ -71,6 +88,7 @@ public class RoomCategory {
     
     @Override
     public String toString() {
-        return "RoomCategory [id=" + id + ", category=" + category + "]";
+        return "RoomCategory [id=" + id + ", category=" + category 
+        		+ ", roomCategoryHotel=" + roomCategoryHotel +"]";
     }
 }

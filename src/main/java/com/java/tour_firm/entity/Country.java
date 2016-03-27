@@ -1,10 +1,13 @@
 package com.java.tour_firm.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,13 +21,25 @@ public class Country {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@OneToMany(mappedBy="country")
+	private Set<City> cities;
 
 	public Country() {}
 	
-	public Country(Integer id, String name) {
+	public Country(Integer id, String name, Set<City> cities) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.cities = cities;
+	}
+	
+	public Set<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(Set<City> cities) {
+		this.cities = cities;
 	}
 	
 	public Integer getId() {
@@ -58,6 +73,9 @@ public class Country {
         if (name != other.name) {
             return false;
         }
+        if (cities != other.cities) {
+        	return false;
+        }
         return true;
     } 
 	
@@ -71,6 +89,6 @@ public class Country {
     
     @Override
     public String toString() {
-        return "Country [id=" + id + ", name=" + name + "]";
+        return "Country [id=" + id + ", name=" + name + ", cities=" + cities + "]";
     }
 }

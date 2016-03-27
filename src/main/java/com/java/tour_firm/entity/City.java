@@ -1,5 +1,7 @@
 package com.java.tour_firm.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,14 +27,26 @@ public class City {
 	@ManyToOne(optional=false, targetEntity=Country.class)
 	@JoinColumn(name="countryId")
 	private Country country;
+	
+	@OneToMany(mappedBy="city")
+	private Set<Hotel> hotels;
 
 	public City() {}
 	
-	public City(Integer id, String name, Country country) {
+	public City(Integer id, String name, Country country, Set<Hotel> hotels) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.country = country;
+		this.hotels = hotels;
+	}
+
+	public Set<Hotel> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(Set<Hotel> hotels) {
+		this.hotels = hotels;
 	}
 
 	public Integer getId() {
