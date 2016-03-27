@@ -12,14 +12,20 @@
       <class>com.java.tour_firm.entity.Hotel</class>
       <class>com.java.tour_firm.entity.HotelCategory</class>
       <class>com.java.tour_firm.entity.RoomCategory</class>
+      <class>com.java.tour_firm.entity.Address</class>
+      <class>com.java.tour_firm.entity.Client</class>
+      <class>com.java.tour_firm.entity.Booking</class>
+      <class>com.java.tour_firm.entity.Visa</class>
       
       <properties>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tour_firm"/>
          <property name="javax.persistence.jdbc.user" value="root"/>
-         <property name="javax.persistence.jdbc.password" value="TARAS1822"/>
+         <property name="javax.persistence.jdbc.password" value=""/>
          <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="eclipselink.logging.level" value="FINE"/>
          <property name="eclipselink.ddl-generation" value="create"/>
+         <property name="hibernate.hbm2ddl.auto" value = "update"></property>
+         
       </properties>
       
    </persistence-unit>

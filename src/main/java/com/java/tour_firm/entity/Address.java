@@ -46,7 +46,6 @@ public class Address {
         this.street = street;
         this.houseNumber = houseNumber;
         this.roomNumber = roomNumber;
-        this.clients = clients;
     }
     
     public Integer getId() {
