@@ -23,11 +23,11 @@ public class Hotel {
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne(optional=false, targetEntity=Country.class)
+	@ManyToOne(optional=false, targetEntity=City.class)
 	@JoinColumn(name = "cityId")
 	private City city;
 	
-	@ManyToOne(optional=false, targetEntity=Country.class)
+	@ManyToOne(optional=false, targetEntity=HotelCategory.class)
 	@JoinColumn(name = "categoryId")
 	private HotelCategory hotelCategory;
 	

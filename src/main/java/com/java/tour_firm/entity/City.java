@@ -33,12 +33,11 @@ public class City {
 
 	public City() {}
 	
-	public City(Integer id, String name, Country country, Set<Hotel> hotels) {
+	public City(Integer id, String name, Country country) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.country = country;
-		this.hotels = hotels;
 	}
 
 	public Set<Hotel> getHotels() {
