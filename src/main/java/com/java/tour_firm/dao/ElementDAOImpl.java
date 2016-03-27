@@ -1,6 +1,5 @@
 package com.java.tour_firm.dao;
 
-import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,9 @@ public class ElementDAOImpl<E> implements ElementDAO<E> {
 	private EntityManager eManager;
 	private EntityTransaction eTransaction = null;
 	private EntityManagerFactory emf;
+	
+	public ElementDAOImpl() {
+    }
 	
 	public ElementDAOImpl(Class<E> elementClass) {
 		this.elementClass = elementClass;
