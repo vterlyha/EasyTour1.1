@@ -27,11 +27,10 @@ public class Country {
 
 	public Country() {}
 	
-	public Country(Integer id, String name, Set<City> cities) {
+	public Country(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.cities = cities;
 	}
 	
 	public Set<City> getCities() {
