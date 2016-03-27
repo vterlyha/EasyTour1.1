@@ -27,11 +27,10 @@ public class HotelCategory {
 
 	public HotelCategory() {}
 	
-	public HotelCategory(Integer id, String category, Set<Hotel> hotels) {
+	public HotelCategory(Integer id, String category) {
 		super();
 		this.id = id;
 		this.category = category;
-		this.hotels = hotels;
 	}
 
 	public Set<Hotel> getHotels() {
